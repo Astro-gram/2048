@@ -1,55 +1,58 @@
-function setupGrid(tiles) {
-    let tilesX = 0;
-    let tilesY = 0;
-    let grid = {};
+import { actionController } from "./actions/actionController.js";
 
-    for (let i = 0; i < tiles; i++) {
+function setupGrid(tiles) {
+    let grid = [];
+
+    for (let x = 0; x < tiles; x++) {
+        let column = [];
+
         for (let y = 0; y < tiles; y++) {
-            grid[(tilesX.toString() + tilesY.toString())] = 0;
-            tilesY++;
+            column.push(0);
         }
 
-        tilesY = 0;
-        tilesX++;
+        grid.push(column);
     }
-
-    console.log(grid)
 
     return grid;
 }
 
-function updateGrid(grid, event, tiles) {
-    let dirHorizontal = 0;
-    let dirVertical = 0;
-
-    if (event.key === "ArrowUp") {
-        dirVertical = -1;
-
-    }
-    else if (event.key === "ArrowDown") {
-        dirVertical = 1;
-
-    }
-    else if (event.key === "ArrowLeft") {
-        dirHorizontal = -1;
-
-    }
-    else if (event.key === "ArrowRight") {
-        dirHorizontal = 1;
-    }
+function addNewTile(grid, tiles) {
+    let spots = [];
 
     for (let x = 0; x < tiles; x++) {
         for (let y = 0; y < tiles; y++) {
-            let currentTile = grid[(x).toString() + y.toString()];
-            let besideCurrentTile = grid[(x + dirHorizontal).toString() + (y + dirVertical).toString()];
-
-            if (currentTile === besideCurrentTile && currentTile !== 0) {
-                grid[x.toString() + y.toString()] = 0;
-                grid[(x + dirHorizontal).toString() + (y + dirVertical).toString()] = currentTile * 2;
+            if (grid[x][y] === 0) {
+                let cord = [x, y];
+                spots.push(cord);
             }
         }
     }
 
+    let spot = spots[Math.floor((Math.random() * spots.length) + 0)];
+
+    if (spot !== undefined) {
+        grid[spot[0]][spot[1]] = 2;
+    }
 }
 
-export {setupGrid, updateGrid};
+function checkLoss(grid, tiles) {
+    if (boardFull(grid, tiles)) {
+        if (actionController("all", grid, tiles) === 0) {
+            console.log("you lost!");
+        }
+    }
+}
+
+function boardFull(grid, tiles) {
+    for (let x = 0; x < tiles; x++) {
+        for (let y = 0; y < tiles; y++) {
+            if (grid[x][y] === 0) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+export {setupGrid, addNewTile, checkLoss};

@@ -10,8 +10,15 @@
     <title>2048</title>
 </head>
 <body>
+    <header class="header">
+        <p class="header__score">Score: 0</p>
+        <p class="header__best-score">Error</p>
+        <button class="header__reset" id="reset">Reset</button>
+    </header>
     <main class="main">
-        <canvas class="main__board" width="800" height="800"></canvas>
+        <canvas class="main__board" width="800" height="800">
+            Your browser doesn't support canvas. Dude come on it's 2021 and your using microsoft explorer or something!
+        </canvas>
     </main>
 
     <script src="../js/main.js" type="module"></script>
