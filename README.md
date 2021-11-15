@@ -1,5 +1,9 @@
 # 2048 - (Semi-complete)
 
-There are a few minor merging bugs and there isn't a loss message (it will console.log if you loss currently).
+TO-DO
+- show loss message if you lose (it will console.log that you lost currently)
+- fix a few merging bugs
+- add animations after actions such as merging, a new tile being added, and winning
+
 
 ![alt text](https://github.com/Astro-gram/2048/blob/master/public/extras/logo.png?raw=true)
