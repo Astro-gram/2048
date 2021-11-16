@@ -15,7 +15,9 @@
 **Get Dependencies**
 
 npm install express
+
 npm install node-sass
+
 
 *npm i express node-sass*
 
