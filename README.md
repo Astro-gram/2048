@@ -19,6 +19,9 @@ npm install express
 npm install node-sass
 
 
+**OR**
+
+
 *npm i express node-sass*
 
 
