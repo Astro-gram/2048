@@ -39,8 +39,6 @@ function downAction(grid, tiles) {
                     grid[x][checkY] = 0;
                     grid[x][checkY + pushAmount] = currentTileCheckValue;
 
-                    console.log(checkY, tileStateChangePoses)
-
                     if (tileStateChangePoses[checkY] !== undefined) {
                         tileStateChangePoses[checkY][1] = checkY + pushAmount;
                     }
